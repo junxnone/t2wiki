@@ -6,6 +6,7 @@ created_at: 2026-05-10T10:00:00Z
 updated_at: 2026-05-11T10:00:00Z
 state: open
 labels: [建模, Blender, 教程, 3D]
+---
 # Blender基础建模入门
 
 ## 简介

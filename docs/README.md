@@ -1,46 +1,161 @@
 # T2 Wiki
 
-欢迎来到 T2 Wiki！这是一个基于 GitHub Issues 自动生成的知识库。
+> 基于 GitHub Issues 的 3D 技术知识库
 
-## 介绍
+## 📚 按标签浏览
 
-本 Wiki 通过 GitHub Issues 进行内容管理：
+<div class="tag-grid">
 
-- 📝 创建 Issue = 创建文档
-- ✏️编辑 Issue = 更新文档
-- 🏷️ 添加标签 = 分类管理
-- 🗑️ 关闭/删除 Issue = 归档/删除文档
+### 🎨 工具软件
 
-所有文档会自动同步到此站点，实现零配置的知识管理。
+<div class="tag-buttons">
+  <a href="#/tags/Blender" class="tag-button">Blender <span class="tag-count">4</span></a>
+  <a href="#/tags/Unity" class="tag-button">Unity <span class="tag-count">1</span></a>
+  <a href="#/tags/Unreal" class="tag-button">Unreal <span class="tag-count">1</span></a>
+  <a href="#/tags/ZBrush" class="tag-button">ZBrush <span class="tag-count">1</span></a>
+  <a href="#/tags/Substance" class="tag-button">Substance <span class="tag-count">1</span></a>
+  <a href="#/tags/Three.js" class="tag-button">Three.js <span class="tag-count">1</span></a>
+</div>
 
-## 如何使用
+### 🔧 技术领域
 
-1. 在本仓库创建一个新 Issue
-2. **Issue 标题**用于标签分类（以空格分隔多个标签）
-3. **Issue 内容**中使用 `# 标题` 作为文档标题
-4. 可选：添加 GitHub 标签进行额外分类
-5. 等待几秒钟，文档将自动出现在侧边栏
+<div class="tag-buttons">
+  <a href="#/tags/建模" class="tag-button">建模 <span class="tag-count">3</span></a>
+  <a href="#/tags/渲染" class="tag-button">渲染 <span class="tag-count">3</span></a>
+  <a href="#/tags/材质" class="tag-button">材质 <span class="tag-count">2</span></a>
+  <a href="#/tags/纹理" class="tag-button">纹理 <span class="tag-count">1</span></a>
+  <a href="#/tags/光照" class="tag-button">光照 <span class="tag-count">1</span></a>
+  <a href="#/tags/动画" class="tag-button">动画 <span class="tag-count">1</span></a>
+  <a href="#/tags/着色器" class="tag-button">着色器 <span class="tag-count">1</span></a>
+  <a href="#/tags/UV" class="tag-button">UV <span class="tag-count">1</span></a>
+  <a href="#/tags/PBR" class="tag-button">PBR <span class="tag-count">1</span></a>
+</div>
 
-### 示例
+### 📖 学习资源
 
-**Issue 标题**：`前端 React 教程`
+<div class="tag-buttons">
+  <a href="#/tags/教程" class="tag-button">教程 <span class="tag-count">7</span></a>
+  <a href="#/tags/理论" class="tag-button">理论 <span class="tag-count">2</span></a>
+  <a href="#/tags/进阶" class="tag-button">进阶 <span class="tag-count">1</span></a>
+  <a href="#/tags/流程" class="tag-button">流程 <span class="tag-count">1</span></a>
+</div>
 
-**Issue 内容**：
-```markdown
-# React 快速入门
+### 🎮 应用领域
 
-这是一篇关于 React 的入门教程...
-```
+<div class="tag-buttons">
+  <a href="#/tags/游戏开发" class="tag-button">游戏开发 <span class="tag-count">3</span></a>
+  <a href="#/tags/前端" class="tag-button">前端 <span class="tag-count">1</span></a>
+  <a href="#/tags/优化" class="tag-button">优化 <span class="tag-count">1</span></a>
+  <a href="#/tags/性能" class="tag-button">性能 <span class="tag-count">1</span></a>
+</div>
 
-**结果**：
-- 文档标题：**React 快速入门**
-- 分类标签：`前端`、`React`、`教程`
+### 🌟 特殊主题
 
-## 快速导航
+<div class="tag-buttons">
+  <a href="#/tags/次世代" class="tag-button">次世代 <span class="tag-count">1</span></a>
+  <a href="#/tags/实时渲染" class="tag-button">实时渲染 <span class="tag-count">1</span></a>
+  <a href="#/tags/物理模拟" class="tag-button">物理模拟 <span class="tag-count">1</span></a>
+  <a href="#/tags/粒子系统" class="tag-button">粒子系统 <span class="tag-count">1</span></a>
+  <a href="#/tags/特效" class="tag-button">特效 <span class="tag-count">2</span></a>
+</div>
 
-- 📋 **左侧边栏** - 按分类浏览所有文档
-- 🏷️ **[标签索引](tags.md)** - 按标签查看文章列表
-- 🔍 **顶部搜索** - 快速查找内容
+### 🔍 查看所有
+
+<div class="tag-buttons">
+  <a href="#/tags" class="tag-button special">📋 所有标签索引</a>
+</div>
+
+</div>
+
+<style>
+.tag-grid {
+  margin-top: 2rem;
+}
+
+.tag-grid h3 {
+  color: var(--theme-color, #42b983);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--theme-color, #42b983);
+  padding-bottom: 0.5rem;
+}
+
+.tag-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.tag-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white !important;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tag-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.tag-button .tag-count {
+  margin-left: 0.5rem;
+  background: rgba(255,255,255,0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.tag-button.special {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  font-size: 1.1rem;
+  padding: 0.8rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .tag-buttons {
+    gap: 0.5rem;
+  }
+  
+  .tag-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+</style>
+
+---
+
+## 🚀 快速开始
+
+### 如何使用
+
+1. **浏览标签** - 点击上方标签按钮查看相关文章
+2. **搜索内容** - 使用顶部搜索框查找关键词
+3. **阅读文章** - 侧边栏自动显示当前文章的章节目录
+
+### 如何贡献
+
+1. 在本仓库创建 Issue
+2. Issue 标题用空格分隔标签（如：`建模 Blender 教程`）
+3. Issue 内容中使用 `# 标题` 作为文档标题
+4. 系统会自动生成文档并分类
+
+---
+
+## 📊 统计信息
+
+- 📝 **15篇** 技术文章
+- 🏷️ **44个** 标签分类
+- 🎨 涵盖建模、渲染、材质、动画等多个领域
 
 ---
 

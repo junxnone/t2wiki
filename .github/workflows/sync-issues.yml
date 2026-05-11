@@ -125,38 +125,125 @@ ${body || '*No description provided.*'}
               }
             });
 
-            // 生成侧边栏内容
-            let sidebarContent = '<!-- 此文件由 GitHub Actions 自动生成 -->\n\n';
-            sidebarContent += '- [首页](/)\n';
-            sidebarContent += '- [标签索引](tags.md)\n\n';
-
-            if (Object.keys(issuesByLabel).length === 0 && issuesWithoutLabel.length === 0) {
-              sidebarContent += '## 文档列表\n\n*暂无文档，请创建 Issue 来添加内容*\n';
-            } else {
-              // 按标签分类显示
-              const sortedLabels = Object.keys(issuesByLabel).sort();
-              sortedLabels.forEach(label => {
-                sidebarContent += `## ${label}\n\n`;
-                issuesByLabel[label].forEach(issue => {
-                  sidebarContent += `- [${issue.displayTitle}](issue-${issue.number}.md)\n`;
-                });
-                sidebarContent += '\n';
-              });
-
-              // 未分类的 issues
-              if (issuesWithoutLabel.length > 0) {
-                sidebarContent += '## 未分类\n\n';
-                issuesWithoutLabel.forEach(issue => {
-                  sidebarContent += `- [${issue.displayTitle}](issue-${issue.number}.md)\n`;
-                });
-              }
-            }
-
-            fs.writeFileSync(path.join(docsDir, '_sidebar.md'), sidebarContent, 'utf8');
-            console.log('Updated sidebar');
+            // 不再生成 _sidebar.md（使用TOC插件自动生成当前页目录）
+            console.log('Sidebar disabled, using TOC plugin for current page navigation');
 
             // 生成标签页面
             const sortedLabels = Object.keys(issuesByLabel).sort();
+
+            // 按分类组织标签
+            const tagCategories = {
+              'tools': ['Blender', 'Unity', 'Unreal', 'ZBrush', 'Substance', 'Three.js', 'glTF'],
+              'tech': ['建模', '渲染', '材质', '纹理', '光照', '动画', '着色器', 'UV', 'PBR', 'HDRI', 'WebGL', 'Nanite', 'LOD', 'ShaderLab', 'JavaScript'],
+              'learn': ['教程', '理论', '进阶', '流程', '技术', '技术对比', '程序化', '3D'],
+              'app': ['游戏开发', '前端', '优化', '性能', '3D格式'],
+              'special': ['次世代', '实时渲染', '物理模拟', '粒子系统', '特效', '角色']
+            };
+
+            // 生成主页
+            let homeContent = '# T2 Wiki\n\n';
+            homeContent += '> 基于 GitHub Issues 的 3D 技术知识库\n\n';
+            homeContent += '## 📚 按标签浏览\n\n';
+            homeContent += '<div class="tag-grid">\n\n';
+
+            // 工具软件
+            homeContent += '### 🎨 工具软件\n\n<div class="tag-buttons">\n';
+            tagCategories.tools.forEach(tag => {
+              if (issuesByLabel[tag]) {
+                const count = issuesByLabel[tag].length;
+                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
+              }
+            });
+            homeContent += '</div>\n\n';
+
+            // 技术领域
+            homeContent += '### 🔧 技术领域\n\n<div class="tag-buttons">\n';
+            tagCategories.tech.forEach(tag => {
+              if (issuesByLabel[tag]) {
+                const count = issuesByLabel[tag].length;
+                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
+              }
+            });
+            homeContent += '</div>\n\n';
+
+            // 学习资源
+            homeContent += '### 📖 学习资源\n\n<div class="tag-buttons">\n';
+            tagCategories.learn.forEach(tag => {
+              if (issuesByLabel[tag]) {
+                const count = issuesByLabel[tag].length;
+                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
+              }
+            });
+            homeContent += '</div>\n\n';
+
+            // 应用领域
+            homeContent += '### 🎮 应用领域\n\n<div class="tag-buttons">\n';
+            tagCategories.app.forEach(tag => {
+              if (issuesByLabel[tag]) {
+                const count = issuesByLabel[tag].length;
+                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
+              }
+            });
+            homeContent += '</div>\n\n';
+
+            // 特殊主题
+            homeContent += '### 🌟 特殊主题\n\n<div class="tag-buttons">\n';
+            tagCategories.special.forEach(tag => {
+              if (issuesByLabel[tag]) {
+                const count = issuesByLabel[tag].length;
+                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
+              }
+            });
+            homeContent += '</div>\n\n';
+
+            homeContent += '### 🔍 查看所有\n\n<div class="tag-buttons">\n';
+            homeContent += '  <a href="#/tags" class="tag-button special">📋 所有标签索引</a>\n';
+            homeContent += '</div>\n\n</div>\n\n';
+
+            // 添加样式和说明
+            homeContent += `<style>
+.tag-grid { margin-top: 2rem; }
+.tag-grid h3 { color: var(--theme-color, #42b983); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.2rem; border-bottom: 2px solid var(--theme-color, #42b983); padding-bottom: 0.5rem; }
+.tag-buttons { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2rem; }
+.tag-button { display: inline-flex; align-items: center; padding: 0.6rem 1.2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white !important; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.tag-button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.tag-button .tag-count { margin-left: 0.5rem; background: rgba(255,255,255,0.3); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.85rem; }
+.tag-button.special { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); font-size: 1.1rem; padding: 0.8rem 1.5rem; }
+@media (max-width: 768px) { .tag-buttons { gap: 0.5rem; } .tag-button { padding: 0.5rem 1rem; font-size: 0.9rem; } }
+</style>
+
+---
+
+## 🚀 快速开始
+
+### 如何使用
+
+1. **浏览标签** - 点击上方标签按钮查看相关文章
+2. **搜索内容** - 使用顶部搜索框查找关键词
+3. **阅读文章** - 侧边栏自动显示当前文章的章节目录
+
+### 如何贡献
+
+1. 在本仓库创建 Issue
+2. Issue 标题用空格分隔标签（如：\`建模 Blender 教程\`）
+3. Issue 内容中使用 \`# 标题\` 作为文档标题
+4. 系统会自动生成文档并分类
+
+---
+
+## 📊 统计信息
+
+- 📝 **${allIssues.length}篇** 技术文章
+- 🏷️ **${sortedLabels.length}个** 标签分类
+- 🎨 涵盖建模、渲染、材质、动画等多个领域
+
+---
+
+*本 Wiki 由 [Docsify](https://docsify.js.org) 驱动，托管在 GitHub Pages*
+`;
+
+            fs.writeFileSync(path.join(docsDir, 'README.md'), homeContent, 'utf8');
+            console.log('Updated homepage');
 
             // 生成标签索引页面
             let tagsIndexContent = '# 标签索引\n\n';
