@@ -30,7 +30,17 @@ The repository uses a GitHub Action (`.github/workflows/sync-issues.yml`) to aut
   - `docs/index.html` - Docsify configuration and entry point
   - `docs/README.md` - Homepage content
   - `docs/_sidebar.md` - Auto-generated navigation (do not edit manually)
+  - `docs/tags.md` - Auto-generated tags index (do not edit manually)
+  - `docs/tags/*.md` - Auto-generated tag detail pages (do not edit manually)
+  - `docs/issue-{number}.md` - Auto-generated issue documents (do not edit manually)
   - `docs/.nojekyll` - Required for GitHub Pages to serve Docsify correctly
+
+### Tag System
+
+- **Tag Index**: `docs/tags.md` lists all tags with article counts
+- **Tag Pages**: `docs/tags/{tag}.md` lists all articles with that tag
+- **Cross-linking**: Tag pages link to articles; articles link back to tags
+- **Auto-cleanup**: Removes orphaned tag pages when tags are no longer used
 
 ## Workflow
 

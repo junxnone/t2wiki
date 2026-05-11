@@ -141,7 +141,8 @@ ${body || '*No description provided.*'}
 
             // 生成侧边栏内容
             let sidebarContent = '<!-- 此文件由 GitHub Actions 自动生成 -->\n\n';
-            sidebarContent += '- [首页](/)\n\n';
+            sidebarContent += '- [首页](/)\n';
+            sidebarContent += '- [标签索引](tags.md)\n\n';
 
             if (Object.keys(issuesByLabel).length === 0 && issuesWithoutLabel.length === 0) {
               sidebarContent += '## 文档列表\n\n*暂无文档，请创建 Issue 来添加内容*\n';
@@ -167,6 +168,70 @@ ${body || '*No description provided.*'}
 
             fs.writeFileSync(path.join(docsDir, '_sidebar.md'), sidebarContent, 'utf8');
             console.log('Updated sidebar');
+
+            // 生成标签页面
+            const sortedLabels = Object.keys(issuesByLabel).sort();
+
+            // 生成标签索引页面
+            let tagsIndexContent = '# 标签索引\n\n';
+            tagsIndexContent += '点击标签查看相关文章。\n\n';
+            tagsIndexContent += '---\n\n';
+
+            if (sortedLabels.length > 0) {
+              sortedLabels.forEach(label => {
+                const count = issuesByLabel[label].length;
+                tagsIndexContent += `## [${label}](tags/${encodeURIComponent(label)}.md) (${count})\n\n`;
+              });
+            } else {
+              tagsIndexContent += '*暂无标签*\n';
+            }
+
+            fs.writeFileSync(path.join(docsDir, 'tags.md'), tagsIndexContent, 'utf8');
+            console.log('Updated tags index');
+
+            // 创建 tags 目录
+            const tagsDir = path.join(docsDir, 'tags');
+            if (!fs.existsSync(tagsDir)) {
+              fs.mkdirSync(tagsDir, { recursive: true });
+            }
+
+            // 清理旧的标签文件
+            const existingTagFiles = fs.readdirSync(tagsDir).filter(f => f.endsWith('.md'));
+            existingTagFiles.forEach(file => {
+              fs.unlinkSync(path.join(tagsDir, file));
+            });
+
+            // 为每个标签生成单独的页面
+            sortedLabels.forEach(label => {
+              const issues = issuesByLabel[label];
+              let tagContent = `# ${label}\n\n`;
+              tagContent += `共 ${issues.length} 篇文章\n\n`;
+              tagContent += '---\n\n';
+
+              issues.forEach(issue => {
+                const labels = new Set();
+                const titleTags = issue.title.split(/\s+/).filter(tag => tag.trim());
+                titleTags.forEach(tag => labels.add(tag.trim()));
+                issue.labels.forEach(l => labels.add(l.name));
+                const labelsArray = Array.from(labels).filter(l => l !== label);
+
+                tagContent += `## [${issue.displayTitle}](../issue-${issue.number}.md)\n\n`;
+                if (labelsArray.length > 0) {
+                  tagContent += '**其他标签**: ';
+                  tagContent += labelsArray.map(l => `[${l}](${encodeURIComponent(l)}.md)`).join(', ');
+                  tagContent += '\n\n';
+                }
+                tagContent += `**作者**: ${issue.user.login} | **更新**: ${new Date(issue.updated_at).toLocaleDateString()}\n\n`;
+                tagContent += '---\n\n';
+              });
+
+              tagContent += '\n[← 返回标签索引](../tags.md)\n';
+
+              const tagFileName = `${label}.md`;
+              fs.writeFileSync(path.join(tagsDir, tagFileName), tagContent, 'utf8');
+            });
+
+            console.log(`Generated ${sortedLabels.length} tag pages`);
 
       - name: Commit and push changes
         run: |
