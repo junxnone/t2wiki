@@ -39,3 +39,17 @@ The repository uses a GitHub Action (`.github/workflows/sync-issues.yml`) to aut
 3. Changes are pushed to the repository
 4. `deploy-pages.yml` deploys the docs folder to GitHub Pages
 5. Site is live at `https://{username}.github.io/t2wiki/`
+
+## Maintenance
+
+### Feature Documentation
+
+When adding new features or making significant changes to the project:
+
+1. Update `FEATURES.md` with a new dated section
+2. Include detailed description of the feature
+3. Add examples and usage instructions
+4. List affected files
+5. Update the Roadmap section if applicable
+
+Follow the existing format in `FEATURES.md` for consistency.

@@ -99,7 +99,9 @@ Issue 内容：
 │   ├── _sidebar.md           # 侧边栏（自动生成）
 │   ├── .nojekyll             # GitHub Pages 配置
 │   └── issue-*.md            # Issue 文档（自动生成）
-└── CLAUDE.md                 # Claude Code 项目说明
+├── CLAUDE.md                 # Claude Code 项目说明
+├── FEATURES.md               # 功能更新记录
+└── README.md                 # 项目说明
 ```
 
 ## 🔧 自定义
