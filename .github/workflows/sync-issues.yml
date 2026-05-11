@@ -1,0 +1,142 @@
+name: Sync Issues to Docs
+
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled, deleted, closed, reopened]
+
+permissions:
+  contents: write
+  issues: read
+
+jobs:
+  sync-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync issue to markdown
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const issue = context.payload.issue;
+            const action = context.payload.action;
+            const docsDir = 'docs';
+            const fileName = `issue-${issue.number}.md`;
+            const filePath = path.join(docsDir, fileName);
+
+            // 确保 docs 目录存在
+            if (!fs.existsSync(docsDir)) {
+              fs.mkdirSync(docsDir, { recursive: true });
+            }
+
+            // 如果 issue 被删除或关闭，删除对应的文件
+            if (action === 'deleted' || action === 'closed') {
+              if (fs.existsSync(filePath)) {
+                fs.unlinkSync(filePath);
+                console.log(`Deleted ${filePath}`);
+              }
+            } else {
+              // 创建或更新 markdown 文件
+              const labels = issue.labels.map(label => label.name).join(', ');
+              const content = `---
+title: ${issue.title}
+issue_number: ${issue.number}
+author: ${issue.user.login}
+created_at: ${issue.created_at}
+updated_at: ${issue.updated_at}
+state: ${issue.state}
+labels: [${labels}]
+---
+
+# ${issue.title}
+
+**Issue #${issue.number}** | **Author:** [@${issue.user.login}](${issue.user.html_url}) | **State:** ${issue.state}
+
+${labels ? `**Labels:** ${labels}\n` : ''}
+**Created:** ${new Date(issue.created_at).toLocaleString()}
+**Updated:** ${new Date(issue.updated_at).toLocaleString()}
+
+---
+
+${issue.body || '*No description provided.*'}
+
+---
+
+[View on GitHub](${issue.html_url})
+`;
+
+              fs.writeFileSync(filePath, content, 'utf8');
+              console.log(`${action === 'opened' ? 'Created' : 'Updated'} ${filePath}`);
+            }
+
+            // 更新侧边栏
+            const { data: allIssues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+
+            // 按标签分组
+            const issuesByLabel = {};
+            const issuesWithoutLabel = [];
+
+            allIssues.forEach(issue => {
+              if (issue.labels.length === 0) {
+                issuesWithoutLabel.push(issue);
+              } else {
+                issue.labels.forEach(label => {
+                  if (!issuesByLabel[label.name]) {
+                    issuesByLabel[label.name] = [];
+                  }
+                  issuesByLabel[label.name].push(issue);
+                });
+              }
+            });
+
+            // 生成侧边栏内容
+            let sidebarContent = '<!-- 此文件由 GitHub Actions 自动生成 -->\n\n';
+            sidebarContent += '- [首页](/)\n\n';
+
+            if (Object.keys(issuesByLabel).length === 0 && issuesWithoutLabel.length === 0) {
+              sidebarContent += '## 文档列表\n\n*暂无文档，请创建 Issue 来添加内容*\n';
+            } else {
+              // 按标签分类显示
+              const sortedLabels = Object.keys(issuesByLabel).sort();
+              sortedLabels.forEach(label => {
+                sidebarContent += `## ${label}\n\n`;
+                issuesByLabel[label].forEach(issue => {
+                  sidebarContent += `- [${issue.title}](issue-${issue.number}.md)\n`;
+                });
+                sidebarContent += '\n';
+              });
+
+              // 未分类的 issues
+              if (issuesWithoutLabel.length > 0) {
+                sidebarContent += '## 未分类\n\n';
+                issuesWithoutLabel.forEach(issue => {
+                  sidebarContent += `- [${issue.title}](issue-${issue.number}.md)\n`;
+                });
+              }
+            }
+
+            fs.writeFileSync(path.join(docsDir, '_sidebar.md'), sidebarContent, 'utf8');
+            console.log('Updated sidebar');
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Sync issue #${{ github.event.issue.number }}: ${{ github.event.action }}"
+            git push
+          fi
