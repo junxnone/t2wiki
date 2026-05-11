@@ -6,17 +6,7 @@ created_at: 2026-05-07T11:20:00Z
 updated_at: 2026-05-11T07:45:00Z
 state: open
 labels: [Unity, 着色器, ShaderLab, 游戏开发, 教程]
----
-
 # Unity着色器编程入门
-
-**Issue #4** | **Author:** [@testuser](https://github.com/testuser) | **State:** open
-
-**Labels:** Unity, 着色器, ShaderLab, 游戏开发, 教程
-**Created:** 5/7/2026, 11:20:00 AM
-**Updated:** 5/11/2026, 7:45:00 AM
-
----
 
 ## Unity着色器简介
 
@@ -306,6 +296,3 @@ return fixed4(normal * 0.5 + 0.5, 1);  // 法线可视化
 - 后处理效果
 - 自定义光照模型
 
----
-
-[View on GitHub](https://github.com/user/t2wiki/issues/4)

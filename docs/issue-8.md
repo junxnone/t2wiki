@@ -6,17 +6,7 @@ created_at: 2026-05-03T10:50:00Z
 updated_at: 2026-05-08T12:20:00Z
 state: open
 labels: [材质, Substance, 程序化, 教程]
----
-
 # Substance Designer参数化材质制作
-
-**Issue #8** | **Author:** [@testuser](https://github.com/testuser) | **State:** open
-
-**Labels:** 材质, Substance, 程序化, 教程
-**Created:** 5/3/2026, 10:50:00 AM
-**Updated:** 5/8/2026, 12:20:00 PM
-
----
 
 ## 什么是Substance Designer
 
@@ -381,6 +371,3 @@ Rust Amount: 可调参数
 - ✅ 使用Frame组织节点图
 - ✅ 添加注释说明复杂逻辑
 
----
-
-[View on GitHub](https://github.com/user/t2wiki/issues/8)

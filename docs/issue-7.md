@@ -6,17 +6,7 @@ created_at: 2026-05-04T13:25:00Z
 updated_at: 2026-05-09T16:45:00Z
 state: open
 labels: [渲染, 技术对比, 理论]
----
-
 # 实时渲染vs离线渲染对比
-
-**Issue #7** | **Author:** [@testuser](https://github.com/testuser) | **State:** open
-
-**Labels:** 渲染, 技术对比, 理论
-**Created:** 5/4/2026, 1:25:00 PM
-**Updated:** 5/9/2026, 4:45:00 PM
-
----
 
 ## 核心区别
 
@@ -291,6 +281,3 @@ labels: [渲染, 技术对比, 理论]
 - ✅ 复杂光照场景
 - ✅ 电影/广告项目
 
----
-
-[View on GitHub](https://github.com/user/t2wiki/issues/7)

@@ -73,21 +73,7 @@ state: ${issue.state}
 labels: [${labelsStr}]
 ---
 
-# ${title}
-
-**Issue #${issue.number}** | **Author:** [@${issue.user.login}](${issue.user.html_url}) | **State:** ${issue.state}
-
-${labelsStr ? `**Labels:** ${labelsStr}\n` : ''}
-**Created:** ${new Date(issue.created_at).toLocaleString()}
-**Updated:** ${new Date(issue.updated_at).toLocaleString()}
-
----
-
 ${body || '*No description provided.*'}
-
----
-
-[View on GitHub](${issue.html_url})
 `;
 
               fs.writeFileSync(filePath, content, 'utf8');

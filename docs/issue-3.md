@@ -6,17 +6,7 @@ created_at: 2026-05-08T16:00:00Z
 updated_at: 2026-05-11T08:15:00Z
 state: open
 labels: [材质, PBR, 渲染, 进阶]
----
-
 # PBR材质系统详解
-
-**Issue #3** | **Author:** [@testuser](https://github.com/testuser) | **State:** open
-
-**Labels:** 材质, PBR, 渲染, 进阶
-**Created:** 5/8/2026, 4:00:00 PM
-**Updated:** 5/11/2026, 8:15:00 AM
-
----
 
 ## 什么是PBR
 
@@ -202,6 +192,3 @@ const material = new THREE.MeshStandardMaterial({
 
 PBR是现代3D渲染的标准，掌握PBR材质系统能让你的作品更加专业和真实。记住能量守恒和物理准确性是关键。
 
----
-
-[View on GitHub](https://github.com/user/t2wiki/issues/3)

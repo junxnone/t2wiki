@@ -6,17 +6,7 @@ created_at: 2026-04-30T12:15:00Z
 updated_at: 2026-05-05T09:40:00Z
 state: open
 labels: [优化, LOD, 游戏开发, 性能]
----
-
 # 游戏中的LOD优化策略
-
-**Issue #11** | **Author:** [@testuser](https://github.com/testuser) | **State:** open
-
-**Labels:** 优化, LOD, 游戏开发, 性能
-**Created:** 4/30/2026, 12:15:00 PM
-**Updated:** 5/5/2026, 9:40:00 AM
-
----
 
 ## LOD简介
 
@@ -34,6 +24,3 @@ LOD3: 10% 多边形（50-100米）
 Culled: 不渲染（>100米）
 ```
 
----
-
-[View on GitHub](https://github.com/user/t2wiki/issues/11)

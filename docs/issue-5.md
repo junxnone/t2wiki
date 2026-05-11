@@ -6,17 +6,7 @@ created_at: 2026-05-06T15:40:00Z
 updated_at: 2026-05-10T18:20:00Z
 state: open
 labels: [UV, 纹理, 建模, 技术, Blender]
----
-
 # UV贴图展开技术详解
-
-**Issue #5** | **Author:** [@testuser](https://github.com/testuser) | **State:** open
-
-**Labels:** UV, 纹理, 建模, 技术, Blender
-**Created:** 5/6/2026, 3:40:00 PM
-**Updated:** 5/10/2026, 6:20:00 PM
-
----
 
 ## 什么是UV贴图
 
@@ -257,6 +247,3 @@ UDIM允许使用多个纹理贴图（1001, 1002, 1003...），适合高精度模
 
 良好的UV展开是高质量纹理的基础。花时间优化UV布局，可以在后续纹理绘制和渲染中获得更好的效果。
 
----
-
-[View on GitHub](https://github.com/user/t2wiki/issues/5)

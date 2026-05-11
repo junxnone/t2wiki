@@ -6,17 +6,7 @@ created_at: 2026-05-05T09:15:00Z
 updated_at: 2026-05-10T14:30:00Z
 state: open
 labels: [建模, 角色, 游戏开发, 流程, ZBrush]
----
-
 # 游戏角色建模流程
-
-**Issue #6** | **Author:** [@testuser](https://github.com/testuser) | **State:** open
-
-**Labels:** 建模, 角色, 游戏开发, 流程, ZBrush
-**Created:** 5/5/2026, 9:15:00 AM
-**Updated:** 5/10/2026, 2:30:00 PM
-
----
 
 ## 概述
 
@@ -351,6 +341,3 @@ File → Export Textures
 - **纹理**：Substance Painter / Mari
 - **烘焙**：Marmoset Toolbag / Substance Painter
 
----
-
-[View on GitHub](https://github.com/user/t2wiki/issues/6)

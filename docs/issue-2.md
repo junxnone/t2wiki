@@ -6,17 +6,7 @@ created_at: 2026-05-09T14:30:00Z
 updated_at: 2026-05-11T09:30:00Z
 state: open
 labels: [WebGL, Three.js, 前端, JavaScript, 教程]
----
-
 # Three.js快速入门指南
-
-**Issue #2** | **Author:** [@testuser](https://github.com/testuser) | **State:** open
-
-**Labels:** WebGL, Three.js, 前端, JavaScript, 教程
-**Created:** 5/9/2026, 2:30:00 PM
-**Updated:** 5/11/2026, 9:30:00 AM
-
----
 
 ## 什么是Three.js
 
@@ -172,6 +162,3 @@ window.addEventListener('resize', () => {
 - 后期处理
 - 物理引擎集成
 
----
-
-[View on GitHub](https://github.com/user/t2wiki/issues/2)
