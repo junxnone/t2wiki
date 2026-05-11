@@ -42,29 +42,48 @@ jobs:
                 console.log(`Deleted ${filePath}`);
               }
             } else {
-              // 创建或更新 markdown 文件
-              const labels = issue.labels.map(label => label.name).join(', ');
+              // 解析 issue body 中的第一个 # 一级标题作为 title
+              let title = issue.title;
+              const body = issue.body || '';
+              const h1Match = body.match(/^#\s+(.+)$/m);
+              if (h1Match) {
+                title = h1Match[1].trim();
+              }
+
+              // 合并标签：从 issue title (name) 中提取 + GitHub 标签
+              const allLabels = new Set();
+
+              // 从 issue title 中提取标签（以空格分隔）
+              const titleTags = issue.title.split(/\s+/).filter(tag => tag.trim());
+              titleTags.forEach(tag => allLabels.add(tag.trim()));
+
+              // 添加 GitHub 手动添加的标签
+              issue.labels.forEach(label => allLabels.add(label.name));
+
+              const labelsArray = Array.from(allLabels);
+              const labelsStr = labelsArray.join(', ');
+
               const content = `---
-title: ${issue.title}
+title: ${title}
 issue_number: ${issue.number}
 author: ${issue.user.login}
 created_at: ${issue.created_at}
 updated_at: ${issue.updated_at}
 state: ${issue.state}
-labels: [${labels}]
+labels: [${labelsStr}]
 ---
 
-# ${issue.title}
+# ${title}
 
 **Issue #${issue.number}** | **Author:** [@${issue.user.login}](${issue.user.html_url}) | **State:** ${issue.state}
 
-${labels ? `**Labels:** ${labels}\n` : ''}
+${labelsStr ? `**Labels:** ${labelsStr}\n` : ''}
 **Created:** ${new Date(issue.created_at).toLocaleString()}
 **Updated:** ${new Date(issue.updated_at).toLocaleString()}
 
 ---
 
-${issue.body || '*No description provided.*'}
+${body || '*No description provided.*'}
 
 ---
 
@@ -88,14 +107,34 @@ ${issue.body || '*No description provided.*'}
             const issuesWithoutLabel = [];
 
             allIssues.forEach(issue => {
-              if (issue.labels.length === 0) {
+              // 合并标签：从 issue title 中提取 + GitHub 标签
+              const allLabels = new Set();
+
+              // 从 issue title 中提取标签（以空格分隔）
+              const titleTags = issue.title.split(/\s+/).filter(tag => tag.trim());
+              titleTags.forEach(tag => allLabels.add(tag.trim()));
+
+              // 添加 GitHub 手动添加的标签
+              issue.labels.forEach(label => allLabels.add(label.name));
+
+              // 从 body 中提取标题用于显示
+              let displayTitle = issue.title;
+              const body = issue.body || '';
+              const h1Match = body.match(/^#\s+(.+)$/m);
+              if (h1Match) {
+                displayTitle = h1Match[1].trim();
+              }
+
+              issue.displayTitle = displayTitle;
+
+              if (allLabels.size === 0) {
                 issuesWithoutLabel.push(issue);
               } else {
-                issue.labels.forEach(label => {
-                  if (!issuesByLabel[label.name]) {
-                    issuesByLabel[label.name] = [];
+                allLabels.forEach(label => {
+                  if (!issuesByLabel[label]) {
+                    issuesByLabel[label] = [];
                   }
-                  issuesByLabel[label.name].push(issue);
+                  issuesByLabel[label].push(issue);
                 });
               }
             });
@@ -112,7 +151,7 @@ ${issue.body || '*No description provided.*'}
               sortedLabels.forEach(label => {
                 sidebarContent += `## ${label}\n\n`;
                 issuesByLabel[label].forEach(issue => {
-                  sidebarContent += `- [${issue.title}](issue-${issue.number}.md)\n`;
+                  sidebarContent += `- [${issue.displayTitle}](issue-${issue.number}.md)\n`;
                 });
                 sidebarContent += '\n';
               });
@@ -121,7 +160,7 @@ ${issue.body || '*No description provided.*'}
               if (issuesWithoutLabel.length > 0) {
                 sidebarContent += '## 未分类\n\n';
                 issuesWithoutLabel.forEach(issue => {
-                  sidebarContent += `- [${issue.title}](issue-${issue.number}.md)\n`;
+                  sidebarContent += `- [${issue.displayTitle}](issue-${issue.number}.md)\n`;
                 });
               }
             }

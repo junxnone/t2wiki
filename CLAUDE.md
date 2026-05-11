@@ -16,8 +16,10 @@ The repository uses a GitHub Action (`.github/workflows/sync-issues.yml`) to aut
 - **Behavior**:
   - Creates/updates `docs/issue-{number}.md` when an issue is opened or modified
   - Deletes the markdown file when an issue is closed or deleted
+  - **Title extraction**: Uses the first `# Header` in issue body as document title; falls back to issue title
+  - **Label merging**: Combines tags from issue title (space-separated words) + GitHub labels
   - Each markdown file includes frontmatter with metadata (title, author, labels, timestamps) and the issue body
-  - Automatically updates `docs/_sidebar.md` with all open issues grouped by labels
+  - Automatically updates `docs/_sidebar.md` with all open issues grouped by merged labels
 - **Automation**: Changes are committed and pushed automatically by github-actions bot
 
 ### Documentation Rendering
