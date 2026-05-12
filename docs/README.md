@@ -15,6 +15,7 @@
   <a href="#/tags/ZBrush" class="tag-button">ZBrush <span class="tag-count">1</span></a>
   <a href="#/tags/Substance" class="tag-button">Substance <span class="tag-count">1</span></a>
   <a href="#/tags/Three.js" class="tag-button">Three.js <span class="tag-count">1</span></a>
+  <a href="#/tags/glTF" class="tag-button">glTF <span class="tag-count">1</span></a>
 </div>
 
 ### 🔧 技术领域
@@ -22,6 +23,7 @@
 <div class="tag-buttons">
   <a href="#/tags/建模" class="tag-button">建模 <span class="tag-count">3</span></a>
   <a href="#/tags/渲染" class="tag-button">渲染 <span class="tag-count">3</span></a>
+  <a href="#/tags/技术" class="tag-button">技术 <span class="tag-count">3</span></a>
   <a href="#/tags/材质" class="tag-button">材质 <span class="tag-count">2</span></a>
   <a href="#/tags/纹理" class="tag-button">纹理 <span class="tag-count">1</span></a>
   <a href="#/tags/光照" class="tag-button">光照 <span class="tag-count">1</span></a>
@@ -29,6 +31,12 @@
   <a href="#/tags/着色器" class="tag-button">着色器 <span class="tag-count">1</span></a>
   <a href="#/tags/UV" class="tag-button">UV <span class="tag-count">1</span></a>
   <a href="#/tags/PBR" class="tag-button">PBR <span class="tag-count">1</span></a>
+  <a href="#/tags/HDRI" class="tag-button">HDRI <span class="tag-count">1</span></a>
+  <a href="#/tags/WebGL" class="tag-button">WebGL <span class="tag-count">2</span></a>
+  <a href="#/tags/Nanite" class="tag-button">Nanite <span class="tag-count">1</span></a>
+  <a href="#/tags/LOD" class="tag-button">LOD <span class="tag-count">1</span></a>
+  <a href="#/tags/ShaderLab" class="tag-button">ShaderLab <span class="tag-count">1</span></a>
+  <a href="#/tags/JavaScript" class="tag-button">JavaScript <span class="tag-count">1</span></a>
 </div>
 
 ### 📖 学习资源
@@ -38,6 +46,10 @@
   <a href="#/tags/理论" class="tag-button">理论 <span class="tag-count">2</span></a>
   <a href="#/tags/进阶" class="tag-button">进阶 <span class="tag-count">1</span></a>
   <a href="#/tags/流程" class="tag-button">流程 <span class="tag-count">1</span></a>
+  <a href="#/tags/技术对比" class="tag-button">技术对比 <span class="tag-count">1</span></a>
+  <a href="#/tags/程序化" class="tag-button">程序化 <span class="tag-count">1</span></a>
+  <a href="#/tags/3D" class="tag-button">3D <span class="tag-count">1</span></a>
+  <a href="#/tags/3D格式" class="tag-button">3D格式 <span class="tag-count">1</span></a>
 </div>
 
 ### 🎮 应用领域
@@ -57,6 +69,7 @@
   <a href="#/tags/物理模拟" class="tag-button">物理模拟 <span class="tag-count">1</span></a>
   <a href="#/tags/粒子系统" class="tag-button">粒子系统 <span class="tag-count">1</span></a>
   <a href="#/tags/特效" class="tag-button">特效 <span class="tag-count">2</span></a>
+  <a href="#/tags/角色" class="tag-button">角色 <span class="tag-count">1</span></a>
 </div>
 
 ### 🔍 查看所有
@@ -154,7 +167,7 @@
 ## 📊 统计信息
 
 - 📝 **15篇** 技术文章
-- 🏷️ **44个** 标签分类
+- 🏷️ **42个** 标签分类
 - 🎨 涵盖建模、渲染、材质、动画等多个领域
 
 ---
