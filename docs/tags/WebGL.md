@@ -4,21 +4,21 @@
 
 ---
 
-## [glTF 3D模型格式详解](../issue-15.md)
+## [glTF 3D模型格式详解](#/issue-15)
 
-**其他标签**: [glTF](glTF.md), [3D格式](3D格式.md), [技术](技术.md)
+**其他标签**: [glTF](#/tags/glTF), [3D格式](#/tags/3D格式), [技术](#/tags/技术)
 
 **作者**: testuser | **更新**: 2026/05/01
 
 ---
 
-## [Three.js快速入门指南](../issue-2.md)
+## [Three.js快速入门指南](#/issue-2)
 
-**其他标签**: [Three.js](Three.js.md), [前端](前端.md), [JavaScript](JavaScript.md), [教程](教程.md)
+**其他标签**: [Three.js](#/tags/Three.js), [前端](#/tags/前端), [JavaScript](#/tags/JavaScript), [教程](#/tags/教程)
 
 **作者**: testuser | **更新**: 2026/05/11
 
 ---
 
 
-[← 返回标签索引](../tags.md)
+[← 返回标签索引](#/tags)

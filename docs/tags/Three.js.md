@@ -4,13 +4,13 @@
 
 ---
 
-## [Three.js快速入门指南](../issue-2.md)
+## [Three.js快速入门指南](#/issue-2)
 
-**其他标签**: [WebGL](WebGL.md), [前端](前端.md), [JavaScript](JavaScript.md), [教程](教程.md)
+**其他标签**: [WebGL](#/tags/WebGL), [前端](#/tags/前端), [JavaScript](#/tags/JavaScript), [教程](#/tags/教程)
 
 **作者**: testuser | **更新**: 2026/05/11
 
 ---
 
 
-[← 返回标签索引](../tags.md)
+[← 返回标签索引](#/tags)

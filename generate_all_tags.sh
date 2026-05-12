@@ -61,13 +61,15 @@ for tag in "${!tag_articles[@]}"; do
             updated="${INFO[3]}"
             all_labels="${INFO[4]}"
 
-            # 生成其他标签列表（排除当前标签）
+            # 生成其他标签列表（排除当前标签）- 使用Docsify hash路由
             other_labels=""
             IFS=',' read -ra LABEL_LIST <<< "$all_labels"
             for lbl in "${LABEL_LIST[@]}"; do
                 lbl=$(echo "$lbl" | sed 's/^[[:space:]]*//' | sed 's/[[:space:]]*$//')
                 if [ "$lbl" != "$tag" ] && [ -n "$lbl" ]; then
-                    other_labels+="[$lbl](${lbl}.md), "
+                    # URL encode标签名
+                    encoded_lbl=$(echo "$lbl" | sed 's/ /%20/g')
+                    other_labels+="[$lbl](#/tags/${encoded_lbl}), "
                 fi
             done
             # 移除最后的逗号和空格
@@ -76,8 +78,8 @@ for tag in "${!tag_articles[@]}"; do
             # 转换日期格式
             update_date=$(date -d "${updated%Z}" "+%Y/%m/%d" 2>/dev/null || echo "$updated")
 
-            # 写入文章信息
-            echo "## [${title}](../issue-${number}.md)" >> "$tag_file"
+            # 写入文章信息（使用Docsify的hash路由格式）
+            echo "## [${title}](#/issue-${number})" >> "$tag_file"
             echo "" >> "$tag_file"
             if [ -n "$other_labels" ]; then
                 echo "**其他标签**: ${other_labels}" >> "$tag_file"
@@ -91,7 +93,7 @@ for tag in "${!tag_articles[@]}"; do
     done
 
     echo "" >> "$tag_file"
-    echo "[← 返回标签索引](../tags.md)" >> "$tag_file"
+    echo "[← 返回标签索引](#/tags)" >> "$tag_file"
 
     echo "Generated: $tag_file"
 done

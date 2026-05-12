@@ -288,17 +288,17 @@ ${body || '*No description provided.*'}
                 issue.labels.forEach(l => labels.add(l.name));
                 const labelsArray = Array.from(labels).filter(l => l !== label);
 
-                tagContent += `## [${issue.displayTitle}](../issue-${issue.number}.md)\n\n`;
+                tagContent += `## [${issue.displayTitle}](#/issue-${issue.number})\n\n`;
                 if (labelsArray.length > 0) {
                   tagContent += '**其他标签**: ';
-                  tagContent += labelsArray.map(l => `[${l}](${encodeURIComponent(l)}.md)`).join(', ');
+                  tagContent += labelsArray.map(l => `[${l}](#/tags/${encodeURIComponent(l)})`).join(', ');
                   tagContent += '\n\n';
                 }
                 tagContent += `**作者**: ${issue.user.login} | **更新**: ${new Date(issue.updated_at).toLocaleDateString()}\n\n`;
                 tagContent += '---\n\n';
               });
 
-              tagContent += '\n[← 返回标签索引](../tags.md)\n';
+              tagContent += '\n[← 返回标签索引](#/tags)\n';
 
               const tagFileName = `${label}.md`;
               fs.writeFileSync(path.join(tagsDir, tagFileName), tagContent, 'utf8');
