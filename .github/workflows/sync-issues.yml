@@ -260,7 +260,7 @@ jobs:
                 tagContent += `- [${issue.displayTitle}](/issue-${issue.number}) - ${updateDate}${otherLabels}\n`;
               });
 
-              tagContent += '\n[← 返回标签索引](/tags)\n';
+              tagContent += '\n[← 返回首页](/)\n';
 
               const tagFileName = `${label}.md`;
               fs.writeFileSync(path.join(tagsDir, tagFileName), tagContent, 'utf8');
