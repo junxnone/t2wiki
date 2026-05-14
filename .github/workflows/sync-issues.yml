@@ -149,7 +149,7 @@ jobs:
 
             // 生成主页 - 按文章数量排序标签
             let homeContent = '# T2 Wiki\n\n';
-            homeContent += '> 基于 GitHub Issues 的 3D 技术知识库\n\n';
+            homeContent += '> 基于 GitHub Issues 的 Wiki\n\n';
             homeContent += '<div class="homepage-search">\n';
             homeContent += '  <input type="search" placeholder="🔍 搜索文章..." class="search-input" />\n';
             homeContent += '  <div class="search-results-panel"></div>\n';

@@ -1,6 +1,6 @@
 # T2 Wiki
 
-> 基于 GitHub Issues 的 3D 技术知识库
+> 基于 GitHub Issues 的 Wiki
 
 <div class="homepage-search">
   <input type="search" placeholder="🔍 搜索文章..." class="search-input" />
