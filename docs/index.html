@@ -239,7 +239,15 @@
   <script>
     window.$docsify = {
       name: 'T2 Wiki',
-      repo: 'https://github.com/' + (window.location.pathname.split('/')[1] || 'junxnone') + '/t2wiki',
+      repo: (function() {
+        const hostname = window.location.hostname;
+        if (hostname.endsWith('.github.io')) {
+          const owner = hostname.replace('.github.io', '');
+          const repo = window.location.pathname.split('/').filter(p => p)[0] || 't2wiki';
+          return `https://github.com/${owner}/${repo}`;
+        }
+        return 'https://github.com/junxnone/t2wiki';
+      })(),
       loadSidebar: false,
       auto2top: true,
       maxLevel: 4,
@@ -458,27 +466,36 @@
                 }).replace(/\//g, '-');
               };
 
-              // Get repo info for issue link from GitHub Pages URL
-              // URL format: https://owner.github.io/repo-name/
-              const hostname = window.location.hostname;
-              const pathname = window.location.pathname;
+              // Get repo info for issue link
+              // Try to extract from docsify config first
+              const repoConfig = window.$docsify && window.$docsify.repo;
+              let issueUrl = '';
 
-              let owner = '';
-              let repo = '';
-
-              if (hostname.endsWith('.github.io')) {
-                // Extract owner from hostname (e.g., "username.github.io" -> "username")
-                owner = hostname.replace('.github.io', '');
-                // Extract repo from pathname (e.g., "/repo-name/..." -> "repo-name")
-                const pathParts = pathname.split('/').filter(p => p);
-                repo = pathParts[0] || 't2wiki';
-              } else {
-                // Fallback for local development
-                owner = 'your-username';
-                repo = 't2wiki';
+              if (repoConfig) {
+                // Extract owner/repo from config URL
+                const repoMatch = repoConfig.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+                if (repoMatch) {
+                  issueUrl = `https://github.com/${repoMatch[1]}/${repoMatch[2]}/issues/${metadata.issue_number}`;
+                }
               }
 
-              const issueUrl = `https://github.com/${owner}/${repo}/issues/${metadata.issue_number}`;
+              // Fallback: try to extract from GitHub Pages URL
+              if (!issueUrl) {
+                const hostname = window.location.hostname;
+                const pathname = window.location.pathname;
+
+                if (hostname.endsWith('.github.io')) {
+                  const owner = hostname.replace('.github.io', '');
+                  const pathParts = pathname.split('/').filter(p => p);
+                  const repo = pathParts[0] || 't2wiki';
+                  issueUrl = `https://github.com/${owner}/${repo}/issues/${metadata.issue_number}`;
+                } else {
+                  // Local development fallback - construct from pathname
+                  const pathParts = pathname.split('/').filter(p => p);
+                  const repo = pathParts[0] || 't2wiki';
+                  issueUrl = `https://github.com/junxnone/${repo}/issues/${metadata.issue_number}`;
+                }
+              }
 
               // Build HTML header
               let header = '<div class="article-meta">\n';
