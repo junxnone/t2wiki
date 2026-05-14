@@ -7,7 +7,7 @@
   <div class="search-results-panel"></div>
 </div>
 
-## 📚 按标签浏览 | [📜 历史记录](/history)
+## 📚 按标签浏览
 
 <div class="tag-buttons">
   <a href="#/tags/build" class="tag-button">build <span class="tag-count">1</span></a>
@@ -17,6 +17,10 @@
   <a href="#/tags/%E6%96%87%E6%A1%A3" class="tag-button">文档 <span class="tag-count">1</span></a>
   <a href="#/tags/%E6%96%87%E7%AB%A0" class="tag-button">文章 <span class="tag-count">1</span></a>
 </div>
+
+## 📜 历史记录
+
+[查看所有文章的时间线 →](/history)
 
 <style>
 .homepage-search { max-width: 600px; margin: 2rem auto; padding: 0 1rem; position: relative; }

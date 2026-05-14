@@ -154,7 +154,7 @@ jobs:
             homeContent += '  <input type="search" placeholder="🔍 搜索文章..." class="search-input" />\n';
             homeContent += '  <div class="search-results-panel"></div>\n';
             homeContent += '</div>\n\n';
-            homeContent += '## 📚 按标签浏览 | [📜 历史记录](/history)\n\n';
+            homeContent += '## 📚 按标签浏览\n\n';
             homeContent += '<div class="tag-buttons">\n';
 
             // 按文章数量排序所有标签
@@ -170,6 +170,8 @@ jobs:
             });
 
             homeContent += '</div>\n\n';
+            homeContent += '## 📜 历史记录\n\n';
+            homeContent += '[查看所有文章的时间线 →](/history)\n\n';
 
             // 添加样式和说明
             const styleAndFooter = [
