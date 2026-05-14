@@ -63,20 +63,21 @@ jobs:
               const labelsArray = Array.from(allLabels);
               const labelsStr = labelsArray.join(', ');
 
-              const content = `---
-title: ${title}
-issue_number: ${issue.number}
-author: ${issue.user.login}
-created_at: ${issue.created_at}
-updated_at: ${issue.updated_at}
-state: ${issue.state}
-labels: [${labelsStr}]
----
+              const frontmatter = [
+                '---',
+                `title: ${title}`,
+                `issue_number: ${issue.number}`,
+                `author: ${issue.user.login}`,
+                `created_at: ${issue.created_at}`,
+                `updated_at: ${issue.updated_at}`,
+                `state: ${issue.state}`,
+                `labels: [${labelsStr}]`,
+                '---',
+                '',
+                body || '*No description provided.*'
+              ].join('\n');
 
-${body || '*No description provided.*'}
-`;
-
-              fs.writeFileSync(filePath, content, 'utf8');
+              fs.writeFileSync(filePath, frontmatter, 'utf8');
               console.log(`${action === 'opened' ? 'Created' : 'Updated'} ${filePath}`);
             }
 
