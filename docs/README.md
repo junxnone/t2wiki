@@ -14,8 +14,6 @@
   <a href="#/tags/2" class="tag-button">2 <span class="tag-count">1</span></a>
   <a href="#/tags/build" class="tag-button">build <span class="tag-count">1</span></a>
   <a href="#/tags/%E6%80%9D%E8%80%83" class="tag-button">思考 <span class="tag-count">1</span></a>
-  <a href="#/tags/%E6%96%87%E6%A1%A3" class="tag-button">文档 <span class="tag-count">1</span></a>
-  <a href="#/tags/%E6%96%87%E7%AB%A0" class="tag-button">文章 <span class="tag-count">1</span></a>
 </div>
 
 ## [📜 历史记录](/history)
