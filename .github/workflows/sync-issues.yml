@@ -154,7 +154,7 @@ jobs:
             homeContent += '  <input type="search" placeholder="🔍 搜索文章..." class="search-input" />\n';
             homeContent += '  <div class="search-results-panel"></div>\n';
             homeContent += '</div>\n\n';
-            homeContent += '## 📚 按标签浏览\n\n';
+            homeContent += '## 📚 按标签浏览 | [📜 历史记录](#/history)\n\n';
             homeContent += '<div class="tag-buttons">\n';
 
             // 按文章数量排序所有标签
@@ -240,6 +240,48 @@ jobs:
             });
 
             console.log(`Generated ${sortedLabels.length} tag pages`);
+
+            // 生成历史页面 - 所有文章按创建时间倒序
+            let historyContent = '# 📜 历史记录\n\n';
+            historyContent += '按创建时间倒序排列的所有文章。\n\n';
+            historyContent += '---\n\n';
+
+            // 按创建时间倒序排序
+            const issuesByDate = allIssues.sort((a, b) => {
+              return new Date(b.created_at) - new Date(a.created_at);
+            });
+
+            issuesByDate.forEach(issue => {
+              // 提取标题
+              let displayTitle = issue.title;
+              const body = issue.body || '';
+              const h1Match = body.match(/^#\s+(.+)$/m);
+              if (h1Match) {
+                displayTitle = h1Match[1].trim();
+              }
+
+              // 收集所有标签
+              const allLabels = new Set();
+              const titleTags = issue.title.split(/\s+/).filter(tag => tag.trim());
+              titleTags.forEach(tag => allLabels.add(tag.trim()));
+              issue.labels.forEach(label => allLabels.add(label.name));
+              const labelsArray = Array.from(allLabels);
+
+              // 格式化创建时间
+              const createdDate = new Date(issue.created_at).toLocaleDateString();
+
+              // 生成标签链接
+              const labelLinks = labelsArray.length > 0
+                ? ' | ' + labelsArray.map(l => `[${l}](/tags/${encodeURIComponent(l)})`).join(', ')
+                : '';
+
+              historyContent += `- [${displayTitle}](/issue-${issue.number}) - ${createdDate}${labelLinks}\n`;
+            });
+
+            historyContent += '\n[← 返回首页](/)\n';
+
+            fs.writeFileSync(path.join(docsDir, 'history.md'), historyContent, 'utf8');
+            console.log('Updated history page');
 
       - name: Commit and push changes
         run: |
