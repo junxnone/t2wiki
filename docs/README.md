@@ -36,32 +36,3 @@
 .tag-button.special { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); font-size: 1.1rem; padding: 0.8rem 1.5rem; }
 @media (max-width: 768px) { .tag-buttons { gap: 0.5rem; } .tag-button { padding: 0.5rem 1rem; font-size: 0.9rem; } }
 </style>
-
----
-
-## 🚀 快速开始
-
-### 如何使用
-
-1. **浏览标签** - 点击上方标签按钮查看相关文章
-2. **搜索内容** - 使用搜索框查找关键词
-3. **阅读文章** - 点击文章标题进入详情页
-
-### 如何贡献
-
-1. 在本仓库创建 Issue
-2. Issue 标题用空格分隔标签（如：`建模 Blender 教程`）
-3. Issue 内容中使用 `# 标题` 作为文档标题
-4. 系统会自动生成文档并分类
-
----
-
-## 📊 统计信息
-
-- 📝 **1篇** 技术文章
-- 🏷️ **5个** 标签分类
-- 🎨 涵盖建模、渲染、材质、动画等多个领域
-
----
-
-*本 Wiki 由 [Docsify](https://docsify.js.org) 驱动，托管在 GitHub Pages*
