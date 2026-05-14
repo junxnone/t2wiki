@@ -6,6 +6,7 @@ created_at: 2026-05-04T13:25:00Z
 updated_at: 2026-05-09T16:45:00Z
 state: open
 labels: [渲染, 技术对比, 理论]
+---
 # 实时渲染vs离线渲染对比
 
 ## 核心区别

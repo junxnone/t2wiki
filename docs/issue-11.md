@@ -6,6 +6,7 @@ created_at: 2026-04-30T12:15:00Z
 updated_at: 2026-05-05T09:40:00Z
 state: open
 labels: [优化, LOD, 游戏开发, 性能]
+---
 # 游戏中的LOD优化策略
 
 ## LOD简介

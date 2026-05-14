@@ -2,29 +2,30 @@
 
 > 基于 GitHub Issues 的 3D 技术知识库
 
+<div class="homepage-search">
+  <input type="search" placeholder="🔍 搜索文章..." class="search-input" />
+  <div class="search-results-panel"></div>
+</div>
+
 ## 📚 按标签浏览
 
-<div class="tag-grid">
-
-### 🎨 工具软件
-
 <div class="tag-buttons">
+  <a href="#/tags/教程" class="tag-button">教程 <span class="tag-count">7</span></a>
   <a href="#/tags/Blender" class="tag-button">Blender <span class="tag-count">4</span></a>
+  <a href="#/tags/建模" class="tag-button">建模 <span class="tag-count">3</span></a>
+  <a href="#/tags/渲染" class="tag-button">渲染 <span class="tag-count">3</span></a>
+  <a href="#/tags/技术" class="tag-button">技术 <span class="tag-count">3</span></a>
+  <a href="#/tags/游戏开发" class="tag-button">游戏开发 <span class="tag-count">3</span></a>
+  <a href="#/tags/材质" class="tag-button">材质 <span class="tag-count">2</span></a>
+  <a href="#/tags/WebGL" class="tag-button">WebGL <span class="tag-count">2</span></a>
+  <a href="#/tags/理论" class="tag-button">理论 <span class="tag-count">2</span></a>
+  <a href="#/tags/特效" class="tag-button">特效 <span class="tag-count">2</span></a>
   <a href="#/tags/Unity" class="tag-button">Unity <span class="tag-count">1</span></a>
   <a href="#/tags/Unreal" class="tag-button">Unreal <span class="tag-count">1</span></a>
   <a href="#/tags/ZBrush" class="tag-button">ZBrush <span class="tag-count">1</span></a>
   <a href="#/tags/Substance" class="tag-button">Substance <span class="tag-count">1</span></a>
   <a href="#/tags/Three.js" class="tag-button">Three.js <span class="tag-count">1</span></a>
   <a href="#/tags/glTF" class="tag-button">glTF <span class="tag-count">1</span></a>
-</div>
-
-### 🔧 技术领域
-
-<div class="tag-buttons">
-  <a href="#/tags/建模" class="tag-button">建模 <span class="tag-count">3</span></a>
-  <a href="#/tags/渲染" class="tag-button">渲染 <span class="tag-count">3</span></a>
-  <a href="#/tags/技术" class="tag-button">技术 <span class="tag-count">3</span></a>
-  <a href="#/tags/材质" class="tag-button">材质 <span class="tag-count">2</span></a>
   <a href="#/tags/纹理" class="tag-button">纹理 <span class="tag-count">1</span></a>
   <a href="#/tags/光照" class="tag-button">光照 <span class="tag-count">1</span></a>
   <a href="#/tags/动画" class="tag-button">动画 <span class="tag-count">1</span></a>
@@ -32,66 +33,101 @@
   <a href="#/tags/UV" class="tag-button">UV <span class="tag-count">1</span></a>
   <a href="#/tags/PBR" class="tag-button">PBR <span class="tag-count">1</span></a>
   <a href="#/tags/HDRI" class="tag-button">HDRI <span class="tag-count">1</span></a>
-  <a href="#/tags/WebGL" class="tag-button">WebGL <span class="tag-count">2</span></a>
   <a href="#/tags/Nanite" class="tag-button">Nanite <span class="tag-count">1</span></a>
   <a href="#/tags/LOD" class="tag-button">LOD <span class="tag-count">1</span></a>
   <a href="#/tags/ShaderLab" class="tag-button">ShaderLab <span class="tag-count">1</span></a>
   <a href="#/tags/JavaScript" class="tag-button">JavaScript <span class="tag-count">1</span></a>
-</div>
-
-### 📖 学习资源
-
-<div class="tag-buttons">
-  <a href="#/tags/教程" class="tag-button">教程 <span class="tag-count">7</span></a>
-  <a href="#/tags/理论" class="tag-button">理论 <span class="tag-count">2</span></a>
   <a href="#/tags/进阶" class="tag-button">进阶 <span class="tag-count">1</span></a>
   <a href="#/tags/流程" class="tag-button">流程 <span class="tag-count">1</span></a>
   <a href="#/tags/技术对比" class="tag-button">技术对比 <span class="tag-count">1</span></a>
   <a href="#/tags/程序化" class="tag-button">程序化 <span class="tag-count">1</span></a>
   <a href="#/tags/3D" class="tag-button">3D <span class="tag-count">1</span></a>
   <a href="#/tags/3D格式" class="tag-button">3D格式 <span class="tag-count">1</span></a>
-</div>
-
-### 🎮 应用领域
-
-<div class="tag-buttons">
-  <a href="#/tags/游戏开发" class="tag-button">游戏开发 <span class="tag-count">3</span></a>
   <a href="#/tags/前端" class="tag-button">前端 <span class="tag-count">1</span></a>
   <a href="#/tags/优化" class="tag-button">优化 <span class="tag-count">1</span></a>
   <a href="#/tags/性能" class="tag-button">性能 <span class="tag-count">1</span></a>
-</div>
-
-### 🌟 特殊主题
-
-<div class="tag-buttons">
   <a href="#/tags/次世代" class="tag-button">次世代 <span class="tag-count">1</span></a>
   <a href="#/tags/实时渲染" class="tag-button">实时渲染 <span class="tag-count">1</span></a>
   <a href="#/tags/物理模拟" class="tag-button">物理模拟 <span class="tag-count">1</span></a>
   <a href="#/tags/粒子系统" class="tag-button">粒子系统 <span class="tag-count">1</span></a>
-  <a href="#/tags/特效" class="tag-button">特效 <span class="tag-count">2</span></a>
   <a href="#/tags/角色" class="tag-button">角色 <span class="tag-count">1</span></a>
 </div>
 
-### 🔍 查看所有
-
-<div class="tag-buttons">
-  <a href="#/tags" class="tag-button special">📋 所有标签索引</a>
-</div>
-
-</div>
-
 <style>
-.tag-grid {
-  margin-top: 2rem;
+.homepage-search {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  position: relative;
 }
 
-.tag-grid h3 {
+.homepage-search .search-input {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.homepage-search .search-input:focus {
+  border-color: var(--theme-color, #42b983);
+  box-shadow: 0 4px 12px rgba(66, 185, 131, 0.15);
+}
+
+.search-results-panel {
+  position: absolute;
+  top: 100%;
+  left: 1rem;
+  right: 1rem;
+  margin-top: 0.5rem;
+  background: white;
+  border: 2px solid var(--theme-color, #42b983);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.search-results-panel.active {
+  display: block;
+}
+
+.search-result-item {
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-result-item:hover {
+  background: #f5f5f5;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-title {
+  font-weight: 600;
   color: var(--theme-color, #42b983);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  border-bottom: 2px solid var(--theme-color, #42b983);
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.search-result-content {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.search-no-results {
+  padding: 1rem 1.2rem;
+  text-align: center;
+  color: #999;
 }
 
 .tag-buttons {
@@ -137,7 +173,6 @@
   .tag-buttons {
     gap: 0.5rem;
   }
-  
   .tag-button {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -153,7 +188,7 @@
 
 1. **浏览标签** - 点击上方标签按钮查看相关文章
 2. **搜索内容** - 使用顶部搜索框查找关键词
-3. **阅读文章** - 侧边栏自动显示当前文章的章节目录
+3. **阅读文章** - 点击文章标题进入详情页
 
 ### 如何贡献
 

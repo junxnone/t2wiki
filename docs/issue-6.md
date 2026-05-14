@@ -6,6 +6,7 @@ created_at: 2026-05-05T09:15:00Z
 updated_at: 2026-05-10T14:30:00Z
 state: open
 labels: [建模, 角色, 游戏开发, 流程, ZBrush]
+---
 # 游戏角色建模流程
 
 ## 概述

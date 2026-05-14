@@ -4,21 +4,7 @@
 
 ---
 
-## [glTF 3D模型格式详解](#/issue-15)
+- [glTF 3D模型格式详解](/issue-15) - 2026/05/01 | [glTF](/tags/glTF), [3D格式](/tags/3D格式), [技术](/tags/技术)
+- [Three.js快速入门指南](/issue-2) - 2026/05/11 | [Three.js](/tags/Three.js), [前端](/tags/前端), [JavaScript](/tags/JavaScript), [教程](/tags/教程)
 
-**其他标签**: [glTF](#/tags/glTF), [3D格式](#/tags/3D格式), [技术](#/tags/技术)
-
-**作者**: testuser | **更新**: 2026/05/01
-
----
-
-## [Three.js快速入门指南](#/issue-2)
-
-**其他标签**: [Three.js](#/tags/Three.js), [前端](#/tags/前端), [JavaScript](#/tags/JavaScript), [教程](#/tags/教程)
-
-**作者**: testuser | **更新**: 2026/05/11
-
----
-
-
-[← 返回标签索引](#/tags)
+[← 返回标签索引](/tags)

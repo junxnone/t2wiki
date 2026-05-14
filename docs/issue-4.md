@@ -6,6 +6,7 @@ created_at: 2026-05-07T11:20:00Z
 updated_at: 2026-05-11T07:45:00Z
 state: open
 labels: [Unity, 着色器, ShaderLab, 游戏开发, 教程]
+---
 # Unity着色器编程入门
 
 ## Unity着色器简介

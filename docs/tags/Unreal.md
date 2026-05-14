@@ -4,13 +4,6 @@
 
 ---
 
-## [Unreal Engine 5 Nanite技术解析](#/issue-9)
+- [Unreal Engine 5 Nanite技术解析](/issue-9) - 2026/05/07 | [Nanite](/tags/Nanite), [实时渲染](/tags/实时渲染), [次世代](/tags/次世代)
 
-**其他标签**: [Nanite](#/tags/Nanite), [实时渲染](#/tags/实时渲染), [次世代](#/tags/次世代)
-
-**作者**: testuser | **更新**: 2026/05/07
-
----
-
-
-[← 返回标签索引](#/tags)
+[← 返回标签索引](/tags)

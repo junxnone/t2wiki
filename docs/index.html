@@ -7,22 +7,244 @@
   <meta name="description" content="T2 Wiki - Knowledge base powered by GitHub Issues">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <!-- Theme toggle button -->
+  <style id="theme-styles">
+    :root {
+      --theme-color: #42b983;
+    }
+    body.dark-mode {
+      --theme-color: #42b983;
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+    }
+    body.dark-mode .markdown-section {
+      color: #d4d4d4;
+    }
+    body.dark-mode .markdown-section h1,
+    body.dark-mode .markdown-section h2,
+    body.dark-mode .markdown-section h3,
+    body.dark-mode .markdown-section h4 {
+      color: #e0e0e0;
+    }
+    body.dark-mode .markdown-section a {
+      color: #5ecc96;
+    }
+    body.dark-mode .markdown-section code {
+      background-color: #2d2d2d;
+      color: #ce9178;
+    }
+    body.dark-mode .markdown-section pre {
+      background-color: #2d2d2d;
+    }
+    body.dark-mode .article-meta {
+      background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
+      color: #d4d4d4;
+    }
+    body.dark-mode .homepage-search .search-input {
+      background-color: #2d2d2d;
+      border-color: #3e3e3e;
+      color: #d4d4d4;
+    }
+    body.dark-mode .search-results-panel {
+      background-color: #2d2d2d;
+      border-color: var(--theme-color);
+    }
+    body.dark-mode .search-result-item {
+      border-bottom-color: #3e3e3e;
+    }
+    body.dark-mode .search-result-item:hover {
+      background: #3e3e3e;
+    }
+    body.dark-mode .sidebar {
+      background-color: #252526;
+      border-right-color: #3e3e3e;
+    }
+    .theme-toggle {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 9999;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+  </style>
+  <style>
+    /* Hide TOC completely */
+    .nav {
+      display: none !important;
+    }
+    aside.nav {
+      display: none !important;
+    }
+    .page_toc {
+      display: none !important;
+    }
+    .docsify-toc-wrap {
+      display: none !important;
+    }
+    /* Hide default Docsify search bar */
+    .search {
+      display: none !important;
+    }
+
+    /* Article metadata styling */
+    .article-meta {
+      background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+      border-left: 4px solid var(--theme-color, #42b983);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+    }
+    .article-meta .article-title {
+      margin: 0 0 0.5rem 0;
+      color: var(--theme-color, #42b983);
+      font-size: 1.4rem;
+      border-bottom: none;
+      font-weight: 600;
+    }
+    .article-meta .meta-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .article-meta .meta-item {
+      display: inline-flex;
+      align-items: center;
+    }
+    .article-meta .meta-item strong {
+      margin-right: 0.3rem;
+      color: #333;
+    }
+    .article-meta .meta-labels {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+    .article-meta .meta-labels strong {
+      color: #333;
+      margin-right: 0.4rem;
+    }
+    .article-meta .label-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white !important;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+      transition: all 0.3s ease;
+    }
+    .article-meta .label-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    .article-meta .edit-button {
+      color: var(--theme-color, #42b983);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .article-meta .edit-button:hover {
+      color: #667eea;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .article-meta {
+        padding: 1rem;
+      }
+      .article-meta .article-title {
+        font-size: 1.5rem;
+      }
+      .article-meta .meta-info {
+        gap: 1rem;
+        flex-direction: column;
+      }
+    }
+
+    /* Tag page article list styling - one line per article */
+    .markdown-section ul li {
+      padding: 0.3rem 0;
+      line-height: 1.6;
+    }
+
+    .markdown-section ul li a:first-of-type {
+      color: var(--theme-color, #42b983);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .markdown-section ul li a:first-of-type:hover {
+      color: #667eea;
+      text-decoration: underline;
+    }
+
+    .markdown-section ul li a:not(:first-of-type) {
+      color: #666;
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 0.1rem 0.4rem;
+      background: rgba(66, 185, 131, 0.1);
+      border-radius: 3px;
+      transition: all 0.2s ease;
+    }
+
+    .markdown-section ul li a:not(:first-of-type):hover {
+      background: rgba(66, 185, 131, 0.2);
+    }
+  </style>
 </head>
 <body>
+  <button class="theme-toggle" id="theme-toggle" title="切换深色模式">🌓</button>
   <div id="app">加载中...</div>
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      themeToggle.textContent = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      themeToggle.textContent = isDark ? '☀️' : '🌓';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
   <script>
     window.$docsify = {
       name: 'T2 Wiki',
-      repo: 'https://github.com/' + (window.location.pathname.split('/')[1] || 'your-username') + '/t2wiki',
+      repo: 'https://github.com/' + (window.location.pathname.split('/')[1] || 'junxnone') + '/t2wiki',
       loadSidebar: false,
       auto2top: true,
       maxLevel: 4,
       subMaxLevel: 3,
       homepage: 'README.md',
-      toc: {
-        tocMaxLevel: 3,
-        target: 'h2, h3, h4'
-      },
       search: {
         maxAge: 86400000,
         paths: 'auto',
@@ -36,12 +258,263 @@
         crossChapter: true,
         crossChapterText: true,
       },
+      plugins: [
+        function(hook, vm) {
+          let searchIndex = [];
+          let indexLoaded = false;
+
+          // Build search index from all issue files
+          hook.ready(function() {
+            buildSearchIndex();
+          });
+
+          async function buildSearchIndex() {
+            try {
+              // Fetch all issue files (issue-1.md to issue-15.md)
+              const promises = [];
+              for (let i = 1; i <= 15; i++) {
+                promises.push(
+                  fetch(`issue-${i}.md`)
+                    .then(res => res.ok ? res.text() : null)
+                    .catch(() => null)
+                );
+              }
+
+              const contents = await Promise.all(promises);
+
+              contents.forEach((content, index) => {
+                if (!content) return;
+
+                const issueNum = index + 1;
+
+                // Parse frontmatter
+                const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+                let title = `Issue ${issueNum}`;
+                let labels = [];
+
+                if (frontmatterMatch) {
+                  const frontmatter = frontmatterMatch[1];
+                  const titleMatch = frontmatter.match(/title:\s*(.+)/);
+                  const labelsMatch = frontmatter.match(/labels:\s*\[([^\]]*)\]/);
+
+                  if (titleMatch) title = titleMatch[1].trim();
+                  if (labelsMatch) labels = labelsMatch[1].split(',').map(l => l.trim());
+                }
+
+                // Get body content (without frontmatter)
+                const body = content.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '').trim();
+
+                searchIndex.push({
+                  title: title,
+                  body: body,
+                  labels: labels,
+                  path: `/issue-${issueNum}`,
+                  issueNum: issueNum
+                });
+              });
+
+              indexLoaded = true;
+              console.log('Search index built:', searchIndex.length, 'articles');
+            } catch (error) {
+              console.error('Failed to build search index:', error);
+            }
+          }
+
+          // Homepage search functionality
+          hook.doneEach(function() {
+            const searchInput = document.querySelector('.homepage-search .search-input');
+            const resultsPanel = document.querySelector('.search-results-panel');
+
+            if (searchInput && resultsPanel && !searchInput.hasAttribute('data-listener')) {
+              searchInput.setAttribute('data-listener', 'true');
+
+              searchInput.addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase().trim();
+
+                if (query.length === 0) {
+                  resultsPanel.classList.remove('active');
+                  resultsPanel.innerHTML = '';
+                  return;
+                }
+
+                performSearch(query, resultsPanel);
+              });
+
+              // Close results when clicking outside
+              document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !resultsPanel.contains(e.target)) {
+                  resultsPanel.classList.remove('active');
+                }
+              });
+            }
+          });
+
+          function performSearch(query, resultsPanel) {
+            if (!indexLoaded || searchIndex.length === 0) {
+              resultsPanel.innerHTML = '<div class="search-no-results">正在加载搜索索引...</div>';
+              resultsPanel.classList.add('active');
+              return;
+            }
+
+            const results = [];
+            const keywords = query.split(/\s+/).filter(k => k);
+
+            searchIndex.forEach(page => {
+              let score = 0;
+              let matchedContent = '';
+
+              // Search in title
+              const lowerTitle = page.title.toLowerCase();
+              if (lowerTitle.includes(query)) {
+                score += 10;
+              }
+
+              // Search in labels
+              page.labels.forEach(label => {
+                if (label.toLowerCase().includes(query)) {
+                  score += 5;
+                }
+              });
+
+              // Search in body
+              const lowerBody = page.body.toLowerCase();
+              keywords.forEach(keyword => {
+                if (lowerBody.includes(keyword)) {
+                  score += 1;
+                  // Extract context around first match
+                  if (!matchedContent) {
+                    const index = lowerBody.indexOf(keyword);
+                    const start = Math.max(0, index - 40);
+                    const end = Math.min(page.body.length, index + keyword.length + 40);
+                    matchedContent = '...' + page.body.substring(start, end).replace(/[#*`]/g, '') + '...';
+                  }
+                }
+              });
+
+              if (score > 0) {
+                results.push({
+                  title: page.title,
+                  content: matchedContent || page.body.substring(0, 100).replace(/[#*`]/g, '') + '...',
+                  path: page.path,
+                  score: score
+                });
+              }
+            });
+
+            // Sort by score
+            results.sort((a, b) => b.score - a.score);
+
+            // Display results
+            if (results.length === 0) {
+              resultsPanel.innerHTML = '<div class="search-no-results">未找到相关结果</div>';
+            } else {
+              resultsPanel.innerHTML = results.slice(0, 10).map(result => `
+                <div class="search-result-item" onclick="window.location.hash = '${result.path}'">
+                  <div class="search-result-title">${result.title}</div>
+                  <div class="search-result-content">${result.content}</div>
+                </div>
+              `).join('');
+            }
+
+            resultsPanel.classList.add('active');
+          }
+        },
+        function(hook, vm) {
+          // Parse and render YAML frontmatter beautifully
+          hook.beforeEach(function(content) {
+            const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n/;
+            const match = content.match(frontmatterRegex);
+
+            if (match) {
+              const frontmatter = match[1];
+              const lines = frontmatter.split('\n');
+              const metadata = {};
+
+              lines.forEach(line => {
+                const colonIndex = line.indexOf(':');
+                if (colonIndex > -1) {
+                  const key = line.substring(0, colonIndex).trim();
+                  let value = line.substring(colonIndex + 1).trim();
+
+                  // Remove brackets from labels array
+                  if (key === 'labels') {
+                    value = value.replace(/^\[|\]$/g, '');
+                  }
+
+                  metadata[key] = value;
+                }
+              });
+
+              // Format dates
+              const formatDate = (dateStr) => {
+                if (!dateStr) return '';
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('zh-CN', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                  hour: '2-digit',
+                  minute: '2-digit'
+                }).replace(/\//g, '-');
+              };
+
+              // Get repo info for issue link from GitHub Pages URL
+              // URL format: https://owner.github.io/repo-name/
+              const hostname = window.location.hostname;
+              const pathname = window.location.pathname;
+
+              let owner = '';
+              let repo = '';
+
+              if (hostname.endsWith('.github.io')) {
+                // Extract owner from hostname (e.g., "username.github.io" -> "username")
+                owner = hostname.replace('.github.io', '');
+                // Extract repo from pathname (e.g., "/repo-name/..." -> "repo-name")
+                const pathParts = pathname.split('/').filter(p => p);
+                repo = pathParts[0] || 't2wiki';
+              } else {
+                // Fallback for local development
+                owner = 'your-username';
+                repo = 't2wiki';
+              }
+
+              const issueUrl = `https://github.com/${owner}/${repo}/issues/${metadata.issue_number}`;
+
+              // Build HTML header
+              let header = '<div class="article-meta">\n';
+              header += `  <h1 class="article-title">${metadata.title || ''}</h1>\n`;
+              header += '  <div class="meta-info">\n';
+              header += `    <span class="meta-item"><strong>创建:</strong> ${formatDate(metadata.created_at)}</span>\n`;
+              header += `    <span class="meta-item"><strong>更新:</strong> ${formatDate(metadata.updated_at)}</span>\n`;
+              header += `    <a href="${issueUrl}" target="_blank" class="edit-button">✏️ 编辑</a>\n`;
+              header += '  </div>\n';
+
+              if (metadata.labels) {
+                const labels = metadata.labels.split(',').map(l => l.trim()).filter(l => l);
+                if (labels.length > 0) {
+                  header += '  <div class="meta-labels">\n';
+                  header += '    <strong>标签:</strong> ';
+                  header += labels.map(label =>
+                    `<a href="#/tags/${encodeURIComponent(label)}" class="label-tag">${label}</a>`
+                  ).join(' ');
+                  header += '\n  </div>\n';
+                }
+              }
+
+              header += '</div>\n\n';
+
+              // Remove frontmatter and add formatted header
+              return header + content.replace(frontmatterRegex, '');
+            }
+
+            return content;
+          });
+        }
+      ]
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <!-- TOC plugin for sidebar -->
-  <script src="https://unpkg.com/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js"></script>
   <!-- Search plugin -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <!-- Pagination plugin -->

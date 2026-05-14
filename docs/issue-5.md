@@ -6,6 +6,7 @@ created_at: 2026-05-06T15:40:00Z
 updated_at: 2026-05-10T18:20:00Z
 state: open
 labels: [UV, 纹理, 建模, 技术, Blender]
+---
 # UV贴图展开技术详解
 
 ## 什么是UV贴图

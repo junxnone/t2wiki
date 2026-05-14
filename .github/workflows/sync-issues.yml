@@ -140,65 +140,29 @@ ${body || '*No description provided.*'}
               'special': ['次世代', '实时渲染', '物理模拟', '粒子系统', '特效', '角色']
             };
 
-            // 生成主页
+            // 生成主页 - 按文章数量排序标签
             let homeContent = '# T2 Wiki\n\n';
             homeContent += '> 基于 GitHub Issues 的 3D 技术知识库\n\n';
+            homeContent += '<div class="homepage-search">\n';
+            homeContent += '  <input type="search" placeholder="🔍 搜索文章..." class="search-input" />\n';
+            homeContent += '  <div class="search-results-panel"></div>\n';
+            homeContent += '</div>\n\n';
             homeContent += '## 📚 按标签浏览\n\n';
-            homeContent += '<div class="tag-grid">\n\n';
+            homeContent += '<div class="tag-buttons">\n';
 
-            // 工具软件
-            homeContent += '### 🎨 工具软件\n\n<div class="tag-buttons">\n';
-            tagCategories.tools.forEach(tag => {
-              if (issuesByLabel[tag]) {
-                const count = issuesByLabel[tag].length;
-                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
-              }
+            // 按文章数量排序所有标签
+            const tagCounts = sortedLabels.map(tag => ({
+              tag: tag,
+              count: issuesByLabel[tag].length
+            }));
+            tagCounts.sort((a, b) => b.count - a.count);
+
+            // 显示所有标签
+            tagCounts.forEach(({ tag, count }) => {
+              homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
             });
-            homeContent += '</div>\n\n';
 
-            // 技术领域
-            homeContent += '### 🔧 技术领域\n\n<div class="tag-buttons">\n';
-            tagCategories.tech.forEach(tag => {
-              if (issuesByLabel[tag]) {
-                const count = issuesByLabel[tag].length;
-                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
-              }
-            });
             homeContent += '</div>\n\n';
-
-            // 学习资源
-            homeContent += '### 📖 学习资源\n\n<div class="tag-buttons">\n';
-            tagCategories.learn.forEach(tag => {
-              if (issuesByLabel[tag]) {
-                const count = issuesByLabel[tag].length;
-                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
-              }
-            });
-            homeContent += '</div>\n\n';
-
-            // 应用领域
-            homeContent += '### 🎮 应用领域\n\n<div class="tag-buttons">\n';
-            tagCategories.app.forEach(tag => {
-              if (issuesByLabel[tag]) {
-                const count = issuesByLabel[tag].length;
-                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
-              }
-            });
-            homeContent += '</div>\n\n';
-
-            // 特殊主题
-            homeContent += '### 🌟 特殊主题\n\n<div class="tag-buttons">\n';
-            tagCategories.special.forEach(tag => {
-              if (issuesByLabel[tag]) {
-                const count = issuesByLabel[tag].length;
-                homeContent += `  <a href="#/tags/${encodeURIComponent(tag)}" class="tag-button">${tag} <span class="tag-count">${count}</span></a>\n`;
-              }
-            });
-            homeContent += '</div>\n\n';
-
-            homeContent += '### 🔍 查看所有\n\n<div class="tag-buttons">\n';
-            homeContent += '  <a href="#/tags" class="tag-button special">📋 所有标签索引</a>\n';
-            homeContent += '</div>\n\n</div>\n\n';
 
             // 添加样式和说明
             homeContent += `<style>
@@ -245,23 +209,6 @@ ${body || '*No description provided.*'}
             fs.writeFileSync(path.join(docsDir, 'README.md'), homeContent, 'utf8');
             console.log('Updated homepage');
 
-            // 生成标签索引页面
-            let tagsIndexContent = '# 标签索引\n\n';
-            tagsIndexContent += '点击标签查看相关文章。\n\n';
-            tagsIndexContent += '---\n\n';
-
-            if (sortedLabels.length > 0) {
-              sortedLabels.forEach(label => {
-                const count = issuesByLabel[label].length;
-                tagsIndexContent += `## [${label}](tags/${encodeURIComponent(label)}.md) (${count})\n\n`;
-              });
-            } else {
-              tagsIndexContent += '*暂无标签*\n';
-            }
-
-            fs.writeFileSync(path.join(docsDir, 'tags.md'), tagsIndexContent, 'utf8');
-            console.log('Updated tags index');
-
             // 创建 tags 目录
             const tagsDir = path.join(docsDir, 'tags');
             if (!fs.existsSync(tagsDir)) {
@@ -288,17 +235,15 @@ ${body || '*No description provided.*'}
                 issue.labels.forEach(l => labels.add(l.name));
                 const labelsArray = Array.from(labels).filter(l => l !== label);
 
-                tagContent += `## [${issue.displayTitle}](#/issue-${issue.number})\n\n`;
-                if (labelsArray.length > 0) {
-                  tagContent += '**其他标签**: ';
-                  tagContent += labelsArray.map(l => `[${l}](#/tags/${encodeURIComponent(l)})`).join(', ');
-                  tagContent += '\n\n';
-                }
-                tagContent += `**作者**: ${issue.user.login} | **更新**: ${new Date(issue.updated_at).toLocaleDateString()}\n\n`;
-                tagContent += '---\n\n';
+                const updateDate = new Date(issue.updated_at).toLocaleDateString();
+                const otherLabels = labelsArray.length > 0
+                  ? ' | ' + labelsArray.map(l => `[${l}](/tags/${encodeURIComponent(l)})`).join(', ')
+                  : '';
+
+                tagContent += `- [${issue.displayTitle}](/issue-${issue.number}) - ${updateDate}${otherLabels}\n`;
               });
 
-              tagContent += '\n[← 返回标签索引](#/tags)\n';
+              tagContent += '\n[← 返回标签索引](/tags)\n';
 
               const tagFileName = `${label}.md`;
               fs.writeFileSync(path.join(tagsDir, tagFileName), tagContent, 'utf8');

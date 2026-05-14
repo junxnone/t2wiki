@@ -6,6 +6,7 @@ created_at: 2026-04-29T10:00:00Z
 updated_at: 2026-05-04T14:20:00Z
 state: open
 labels: [动画, 理论, 教程]
+---
 # 3D动画的12条原则
 
 ## 动画12原则

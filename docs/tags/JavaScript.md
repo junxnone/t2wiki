@@ -4,13 +4,6 @@
 
 ---
 
-## [Three.js快速入门指南](#/issue-2)
+- [Three.js快速入门指南](/issue-2) - 2026/05/11 | [WebGL](/tags/WebGL), [Three.js](/tags/Three.js), [前端](/tags/前端), [教程](/tags/教程)
 
-**其他标签**: [WebGL](#/tags/WebGL), [Three.js](#/tags/Three.js), [前端](#/tags/前端), [教程](#/tags/教程)
-
-**作者**: testuser | **更新**: 2026/05/11
-
----
-
-
-[← 返回标签索引](#/tags)
+[← 返回标签索引](/tags)

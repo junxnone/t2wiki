@@ -6,6 +6,7 @@ created_at: 2026-05-09T14:30:00Z
 updated_at: 2026-05-11T09:30:00Z
 state: open
 labels: [WebGL, Three.js, 前端, JavaScript, 教程]
+---
 # Three.js快速入门指南
 
 ## 什么是Three.js

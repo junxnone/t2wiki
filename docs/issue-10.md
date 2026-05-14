@@ -6,6 +6,7 @@ created_at: 2026-05-01T08:30:00Z
 updated_at: 2026-05-06T15:00:00Z
 state: open
 labels: [HDRI, 光照, 渲染, 教程]
+---
 # HDRI环境光照使用指南
 
 ## 什么是HDRI

@@ -6,6 +6,7 @@ created_at: 2026-04-26T09:30:00Z
 updated_at: 2026-05-01T16:00:00Z
 state: open
 labels: [glTF, 3D格式, WebGL, 技术]
+---
 # glTF 3D模型格式详解
 
 ## 什么是glTF

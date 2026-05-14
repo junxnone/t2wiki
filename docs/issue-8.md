@@ -6,6 +6,7 @@ created_at: 2026-05-03T10:50:00Z
 updated_at: 2026-05-08T12:20:00Z
 state: open
 labels: [材质, Substance, 程序化, 教程]
+---
 # Substance Designer参数化材质制作
 
 ## 什么是Substance Designer
