@@ -11,6 +11,7 @@
 
 <div class="tag-buttons">
   <a href="#/tags/test" class="tag-button">test <span class="tag-count">1</span></a>
+  <a href="#/tags/%E6%96%87%E7%AB%A0" class="tag-button">文章 <span class="tag-count">1</span></a>
 </div>
 
 <style>
@@ -55,7 +56,7 @@
 ## 📊 统计信息
 
 - 📝 **1篇** 技术文章
-- 🏷️ **1个** 标签分类
+- 🏷️ **2个** 标签分类
 - 🎨 涵盖建模、渲染、材质、动画等多个领域
 
 ---
