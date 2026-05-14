@@ -4,7 +4,7 @@
 
 ---
 
-- [测试历史页面](/issue-2) - 5/14/2026 | [t2](/tags/t2)
+- [测试历史页面](/issue-2) - 5/14/2026 | [test](/tags/test), [2](/tags/2)
 - [测试 issue](/issue-1) - 5/14/2026 | [test](/tags/test), [思考](/tags/%E6%80%9D%E8%80%83), [文档](/tags/%E6%96%87%E6%A1%A3), [文章](/tags/%E6%96%87%E7%AB%A0), [build](/tags/build)
 
 [← 返回首页](/)
