@@ -12,9 +12,7 @@
 <div class="tag-buttons">
   <a href="#/tags/2" class="tag-button">2 <span class="tag-count">1</span></a>
   <a href="#/tags/TODO" class="tag-button">TODO <span class="tag-count">1</span></a>
-  <a href="#/tags/build" class="tag-button">build <span class="tag-count">1</span></a>
   <a href="#/tags/test" class="tag-button">test <span class="tag-count">1</span></a>
-  <a href="#/tags/%E6%80%9D%E8%80%83" class="tag-button">思考 <span class="tag-count">1</span></a>
 </div>
 
 ## [📜 历史记录](/history)
