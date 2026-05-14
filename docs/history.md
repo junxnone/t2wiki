@@ -4,7 +4,7 @@
 
 ---
 
-- [测试历史页面](/issue-2) - 5/14/2026 | [test](/tags/test), [2](/tags/2)
+- [测试历史页面](/issue-2) - 5/14/2026 | [Features](/tags/Features)
 - [TODO](/issue-1) - 5/14/2026 | [TODO](/tags/TODO)
 
 [← 返回首页](/)

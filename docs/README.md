@@ -10,9 +10,8 @@
 ## 📚 按标签浏览
 
 <div class="tag-buttons">
-  <a href="#/tags/2" class="tag-button">2 <span class="tag-count">1</span></a>
+  <a href="#/tags/Features" class="tag-button">Features <span class="tag-count">1</span></a>
   <a href="#/tags/TODO" class="tag-button">TODO <span class="tag-count">1</span></a>
-  <a href="#/tags/test" class="tag-button">test <span class="tag-count">1</span></a>
 </div>
 
 ## [📜 历史记录](/history)
