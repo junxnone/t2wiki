@@ -7,7 +7,7 @@
   <div class="search-results-panel"></div>
 </div>
 
-## 📚 按标签浏览 | [📜 历史记录](#/history)
+## 📚 按标签浏览 | [📜 历史记录](/history)
 
 <div class="tag-buttons">
   <a href="#/tags/build" class="tag-button">build <span class="tag-count">1</span></a>
