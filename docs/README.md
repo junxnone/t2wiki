@@ -10,6 +10,7 @@
 ## 📚 按标签浏览
 
 <div class="tag-buttons">
+  <a href="#/tags/build" class="tag-button">build <span class="tag-count">1</span></a>
   <a href="#/tags/test" class="tag-button">test <span class="tag-count">1</span></a>
   <a href="#/tags/%E6%80%9D%E8%80%83" class="tag-button">思考 <span class="tag-count">1</span></a>
   <a href="#/tags/%E6%96%87%E6%A1%A3" class="tag-button">文档 <span class="tag-count">1</span></a>
@@ -58,7 +59,7 @@
 ## 📊 统计信息
 
 - 📝 **1篇** 技术文章
-- 🏷️ **4个** 标签分类
+- 🏷️ **5个** 标签分类
 - 🎨 涵盖建模、渲染、材质、动画等多个领域
 
 ---
